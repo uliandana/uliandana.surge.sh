@@ -4,7 +4,7 @@
   "description": "Frontend of uliandana web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server --cors -p8080"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/uliandana/uliandana.surge.sh/issues"
   },
-  "homepage": "https://github.com/uliandana/uliandana.surge.sh#readme"
+  "homepage": "https://github.com/uliandana/uliandana.surge.sh#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
 }
