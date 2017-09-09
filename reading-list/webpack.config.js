@@ -1,10 +1,10 @@
 const path = require("path");
 
 module.exports = {
-    entry: './src/script.ts',
+    entry: './src/script/app.ts',
     output: {
         filename: 'script.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist/')
     },
     module: {
         rules: [
@@ -12,6 +12,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts']
+        extensions: ['.js', '.ts'],
+        alias: { 'vue$': 'vue/dist/vue.esm.js' }
     }
 }
