@@ -1,15 +1,18 @@
 import Axios from "axios";
+import Util from "../util/Util";
 import { CategoryInfo } from "../entity/CategoryInfo";
+import Series from "../entity/Series";
 
-const srcUrl = "http://127.0.0.1:8090";
+const srcUrl: string = Util.assetsUrl;
 export default class Resource {
     static async getCategoryInfo(category:string) {
         let res = await Resource.axiosRequest(`${srcUrl}/${category}/data/info.json`);
         return new CategoryInfo(res);
     }
 
-    static async getSeriesData(category:string, title:string) {
-        return await Resource.axiosRequest(`${srcUrl}/${category}/data/series/${title}.json`);
+    static async getSeriesData(category:string, title:string, page: string) {
+        let res = await Resource.axiosRequest(`${srcUrl}/${category}/data/series/${title}-${page}.json`);
+        return new Series(res);
     }
 
     static async getWeekData(category:string, date:string) {

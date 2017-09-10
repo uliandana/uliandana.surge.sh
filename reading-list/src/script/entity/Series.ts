@@ -11,28 +11,19 @@ export default class Series {
     issuesThisPage: number;
     issues: Issue[];
 
-    constructor(title: string, status: "ongoing" | "completed" | "incomplete") {
-        this.title = title;
-        this.status = status;
-        this.startDate = "";
-        this.endDate = "";
-        this.totalIssues = 0;
-        this.page = 1;
-        this.totalPages = 1;
-        this.issuesThisPage = 0;
-        this.issues = [];
+    constructor(obj: any) {
+        this.title = obj.title;
+        this.status = obj.status;
+        this.startDate = obj.startDate;
+        this.endDate = obj.endDate;
+        this.totalIssues = obj.totalIssues;
+        this.page = obj.page;
+        this.totalPages = obj.totalPages;
+        this.issuesThisPage = obj.issuesThisPage;
+        this.issues = obj.issues.map(item => { return new Issue(item); });
     }
 
-    static clone(series: Series, page: number, issues: Issue[]) {
-        let retval = new Series(series.title, series.status);
-        retval.status = series.status;
-        retval.startDate = series.startDate;
-        retval.endDate = series.endDate;
-        retval.totalIssues = series.totalIssues;
-        retval.page = page;
-        retval.totalPages = series.totalPages;
-        retval.issuesThisPage = issues.length;
-        retval.issues = issues;
-        return retval;
+    getIssue(name: string) {
+        return this.issues.find(item => { return item.nameEncoded == name; });
     }
 }

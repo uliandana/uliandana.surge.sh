@@ -1,16 +1,21 @@
 import Util from "../util/Util";
 
+const srcUrl: string = Util.assetsUrl;
 export default class Issue {
     name: string;
+    nameEncoded: string;
     title: string;
+    titleEncoded: string;
     date: string;
     images: Images;
 
-    constructor(name:string, category: string) {
-        this.name = name;
-        this.title = "";
-        this.date = "";
-        this.images = new Images(name, category);
+    constructor(obj: any) {
+        this.name = obj.name;
+        this.nameEncoded = Util.textEncode(obj.name);
+        this.title = obj.title;
+        this.titleEncoded = Util.textEncode(obj.title);
+        this.date = obj.date;
+        this.images = new Images(obj.images);
     }
 }
 
@@ -20,10 +25,10 @@ export class Images {
     sm: string;
     xs: string;
 
-    constructor(name: string, category: string) {
-        this.lg = `${category}/image/lg/${Util.textEncode(name)}.jpg`;
-        this.md = `${category}/image/md/${Util.textEncode(name)}.jpg`;
-        this.sm = `${category}/image/sm/${Util.textEncode(name)}.jpg`;
-        this.xs = `${category}/image/xs/${Util.textEncode(name)}.jpg`;
+    constructor(obj: any) {
+        this.lg = `${srcUrl}/${obj.lg}`;
+        this.md = `${srcUrl}/${obj.md}`;
+        this.sm = `${srcUrl}/${obj.sm}`;
+        this.xs = `${srcUrl}/${obj.xs}`;
     }
 }
