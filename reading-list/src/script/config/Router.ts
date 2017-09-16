@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 const Home = require("../component/home.vue").default;
 const Category = require("../component/category.vue").default;
 const Series = require("../component/series.vue").default;
+const Week = require("../component/week.vue").default;
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -41,7 +42,7 @@ export default new VueRouter({
         {
             path: "/:category/week/:date",
             name: "week",
-            component: { template: "<div>Tanggal: {{ $route.params.date }}</div>" }
+            component: Week
         }
     ]
 });

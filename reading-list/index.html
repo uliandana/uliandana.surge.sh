@@ -8,10 +8,33 @@
 <body>
 	<div id="app">
 		<header>
-			<router-link to="/"><h1>Reading List</h1></router-link>
+			<nav class="navbar is-transparent">
+				<div class="navbar-brand">
+					<router-link to="/" class="navbar-item">Reading List</router-link>
+					<button class="button navbar-burger" data-target="navbarMenu"><span></span><span></span><span></span></button>
+				</div>
+				<div class="navbar-menu" id="navbarMenu">
+					<ul class="navbar-end">
+						<li class="navbar-item">
+							<router-link to="/about">About</router-link>
+						</li>
+						<li class="navbar-item">
+							<router-link to="/list">My List</router-link>
+						</li>
+						<li class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">Categories</a>
+							<div class="navbar-dropdown is-right is-boxed">
+								<router-link to="/new-52" class="navbar-item">New 52</router-link>
+								<router-link to="/rebirth" class="navbar-item">Rebirth</router-link>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
 		</header>
 		<router-view></router-view>
 	</div>
+	<script src="index.js"></script>
 	<script src="./dist/script.js"></script>
 </body>
 </html>

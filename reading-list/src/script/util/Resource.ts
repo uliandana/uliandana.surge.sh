@@ -2,6 +2,7 @@ import Axios from "axios";
 import Util from "../util/Util";
 import { CategoryInfo } from "../entity/CategoryInfo";
 import Series from "../entity/Series";
+import Week from "../entity/Week";
 
 const srcUrl: string = Util.assetsUrl;
 export default class Resource {
@@ -16,7 +17,8 @@ export default class Resource {
     }
 
     static async getWeekData(category:string, date:string) {
-        return await Resource.axiosRequest(`${srcUrl}/${category}/data/week/${date}.json`);
+        let res = await Resource.axiosRequest(`${srcUrl}/${category}/data/week/${date}.json`);
+        return new Week(res);
     }
 
     static async axiosRequest(url:string) {

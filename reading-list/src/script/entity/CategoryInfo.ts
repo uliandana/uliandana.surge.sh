@@ -1,10 +1,12 @@
 import Series from "./Series"
 
 export class CategoryInfo {
+    category: string;
     series: InfoSeries[];
     week: InfoWeek[];
 
     constructor(obj) {
+        this.category = obj.category;
         this.series = obj.series;
         this.week = obj.week;
     }
@@ -29,14 +31,12 @@ export class InfoSeries {
 }
 
 export class InfoWeek {
-    year: number;
-    month: number;
-    date: number;
+    year: string;
+    months: { month: string; dates: string[] }[];
 
     constructor(obj: any) {
         this.year = obj.year;
-        this.month = obj.month;
-        this.date = obj.date;
+        this.months = obj.months;
     }
 }
 

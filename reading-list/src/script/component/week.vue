@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1 class="title is-1">{{ series.title }}</h1>
+        <h1 class="title is-1">{{ week.date }}</h1>
         <ol class="columns is-multiline">
-            <li v-for="issue of series.issues" class="column is-2">
+            <li v-for="issue of week.issues" class="column is-2">
                 <div class="card">
                     <div class="card-image image">
                         <img :src="issue.images.sm" />
@@ -16,10 +16,10 @@
     </div>
 </template>
 <script lang="ts">
-    import CompSeries from "./series";
+    import CompWeek from "./week";
     export default {
         data() {
-            return { category: this.$route.params.category, series: {} }
+            return { category: this.$route.params.category, week: {} }
         },
         created() {
             this.getData()
@@ -29,7 +29,7 @@
         },
         methods: {
             async getData() {
-                this.series = await CompSeries.getData(this.$route.params.category, this.$route.params.title, "1");
+                this.week = await CompWeek.getData(this.$route.params.category, this.$route.params.date);
             }
         }
     };

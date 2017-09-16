@@ -5,9 +5,9 @@ export default class Week {
     totalIssues: number;
     issues: Issue[];
 
-    constructor(date: string) {
-        this.date = date;
-        this.totalIssues = 0;
-        this.issues = [];
+    constructor(obj: any) {
+        this.date = obj.date;
+        this.totalIssues = obj.totalIssues;
+        this.issues = obj.issues.map(item => { return new Issue(item); });
     }
 }
