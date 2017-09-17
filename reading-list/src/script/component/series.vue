@@ -16,13 +16,31 @@
                 </div>
             </li>
         </ol>
+        <nav class="pagination">
+            <ul class="pagination-list">
+                <li v-for="page of pages">
+                    <span v-if="page.isEllips" class="pagination-ellipsis">&hellip;</span>
+                    <router-link
+                        v-else
+                        :to="{ name: 'series', params: { category: $route.params.category, title: series.titleEncoded}, query: {page: page.number} }"
+                        class="pagination-link" :class="page.isCurrent"
+                    >
+                    {{page.number}}
+                    </router-link>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 <script lang="ts">
     import CompSeries from "./series";
     export default {
         data() {
-            return { category: this.$route.params.category, series: {} }
+            return {
+                category: this.$route.params.category,
+                series: {},
+                pages: []
+            }
         },
         created() {
             this.getData()
@@ -32,7 +50,10 @@
         },
         methods: {
             async getData() {
-                this.series = await CompSeries.getData(this.$route.params.category, this.$route.params.title, "1");
+                let page = this.$route.query.page;
+                if (typeof page === "undefined" || page.match(/[^0-9]/) || page <= 0) page = "1";
+                this.series = await CompSeries.getData(this.$route.params.category, this.$route.params.title, page);
+                this.pages = CompSeries.setPagination(this.series.page, this.series.totalPages);
             }
         }
     };
