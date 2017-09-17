@@ -1,8 +1,8 @@
 <template>
     <div>
         <h1 class="title is-1">{{ week.date }}</h1>
-        <ol class="columns is-multiline">
-            <li v-for="issue of week.issues" class="column is-2">
+        <ol class="columns is-multiline is-mobile">
+            <li v-for="issue of week.issues" class="column is-2-tablet is-6-mobile">
                 <div class="card">
                     <div class="card-image image">
                         <img :src="issue.images.sm" />
@@ -10,6 +10,9 @@
                     <div class="card-content">
                         <p>{{issue.name}}</p>
                     </div>
+                    <footer class="card-footer">
+                        <router-link :to="{ name: 'series', params: { category: $route.params.category, title: issue.titleEncoded } }">{{issue.title}}</router-link>
+                    </footer>
                 </div>
             </li>
         </ol>
