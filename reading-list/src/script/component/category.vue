@@ -24,9 +24,13 @@
             </div>
         </section>
         <h3 class="title is-3">Complete List of Series</h3>
-        <ol>
-            <li v-for="item of series">
-                <router-link :to="{ name: 'series', params: { category: $route.params.category, title: item.titleEncoded } }" class="box">{{item.title}}</router-link>
+        <button class="button" v-on:click="toggleSeries">{{ showSeries.text}}</button>
+        <ol v-if="showSeries.boolean" class="columns is-multiline is-mobile">
+            <li v-for="item of series" class="column is-6">
+                <router-link :to="{ name: 'series', params: { category: $route.params.category, title: item.titleEncoded } }" class="box">
+                    <div class="is-size-5">{{item.title}}</div>
+                    <div class="is-size-7">{{item.totalIssues}} issues <span class="tag" :class="issueStatus(item.status)">{{item.status}}</span></div>
+                </router-link>
             </li>
         </ol>
     </div>
@@ -48,7 +52,11 @@
                     months: [],
                     dates: []
                 },
-                weekTarget: ""
+                weekTarget: "",
+                showSeries: {
+                    boolean: false,
+                    text: ""
+                }
             }
         },
         created() {
@@ -66,6 +74,10 @@
                 this.select = res.select;
                 this.options = res.options;
                 this.weekTarget = res.weekTarget;
+                this.showSeries = {
+                    boolean: false,
+                    text: `Show all (${this.series.length} series)`
+                };
             },
 
             selectDate(event) {
@@ -83,6 +95,17 @@
                 }
 
                 this.weekTarget = `${this.select.year}-${this.select.month}-${this.select.date}`;
+            },
+
+            toggleSeries() {
+                this.showSeries.boolean = !this.showSeries.boolean;
+                this.showSeries.text = this.showSeries.boolean ? "Hide all" : `Show all (${this.series.length} series)`;
+            },
+
+            issueStatus(status) {
+                if (status === "completed") return "is-success";
+                else if (status === "ongoing") return "is-primary";
+                else if (status === "incomplete") return "is-warning";
             }
         }
     };
