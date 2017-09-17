@@ -20,7 +20,7 @@
                         <option v-for="item of options.dates">{{ item }}</option>
                     </select>
                 </div>
-                <router-link :to="{ name: 'week', params: { category: $route.params.category, date: weekTarget } }" class="button">find</router-link>
+                <router-link :to="{ name: 'week', params: { category: $route.params.category, date: weekTarget } }" class="button" :disabled="weekTargetDisabled">find</router-link>
             </div>
         </section>
         <h3 class="title is-3">Complete List of Series</h3>
@@ -53,6 +53,7 @@
                     dates: []
                 },
                 weekTarget: "",
+                weekTargetDisabled: true,
                 showSeries: {
                     boolean: false,
                     text: ""
@@ -74,6 +75,7 @@
                 this.select = res.select;
                 this.options = res.options;
                 this.weekTarget = res.weekTarget;
+                this.weekTargetDisabled = false;
                 this.showSeries = {
                     boolean: false,
                     text: `Show all (${this.series.length} series)`
@@ -94,7 +96,11 @@
                     this.select.date = this.options.dates[0];
                 }
 
-                this.weekTarget = `${this.select.year}-${this.select.month}-${this.select.date}`;
+                if (typeof this.select.year == "undefined" || typeof this.select.month == "undefined" || typeof this.select.date == "undefined") this.weekTargetDisabled = true;
+                else {
+                    this.weekTargetDisabled = false;
+                    this.weekTarget = `${this.select.year}-${this.select.month}-${this.select.date}`;
+                }
             },
 
             toggleSeries() {
