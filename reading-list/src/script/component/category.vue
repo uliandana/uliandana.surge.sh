@@ -1,38 +1,52 @@
 <template>
     <div>
-        <h1 class="title is-1">{{ category }}</h1>
-        <h3 class="title is-3">Featured</h3>
-        <section>
-            <header><h3 class="title is-3">Find by Date</h3></header>
-            <div>
-                <div class="select">
-                    <select v-model="select.year" v-on:change="selectDate" name="year">
-                        <option v-for="item of week">{{ item.year }}</option>
-                    </select>
-                </div>
-                <div class="select">
-                    <select v-model="select.month" v-on:change="selectDate" name="month">
-                        <option v-for="item of options.months">{{ item.month }}</option>
-                    </select>
-                </div>
-                <div class="select">
-                    <select v-model="select.date" v-on:change="selectDate" name="date">
-                        <option v-for="item of options.dates">{{ item }}</option>
-                    </select>
-                </div>
-                <router-link :to="{ name: 'week', params: { category: $route.params.category, date: weekTarget } }" class="button" :disabled="weekTargetDisabled">find</router-link>
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <h1 class="title">{{ category }}</h1>
             </div>
         </section>
-        <h3 class="title is-3">Complete List of Series</h3>
-        <button class="button" v-on:click="toggleSeries">{{ showSeries.text}}</button>
-        <ol v-if="showSeries.boolean" class="columns is-multiline is-mobile">
-            <li v-for="item of series" class="column is-6">
-                <router-link :to="{ name: 'series', params: { category: $route.params.category, title: item.titleEncoded } }" class="box">
-                    <div class="is-size-5">{{item.title}}</div>
-                    <div class="is-size-7">{{item.totalIssues}} issues <span class="tag" :class="issueStatus(item.status)">{{item.status}}</span></div>
-                </router-link>
-            </li>
-        </ol>
+        <section class="section">
+            <div class="container">
+                <h3 class="title is-3">Featured</h3>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <h3 class="title is-3">Find by Date</h3>
+                <div>
+                    <div class="select">
+                        <select v-model="select.year" v-on:change="selectDate" name="year">
+                            <option v-for="item of week">{{ item.year }}</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <select v-model="select.month" v-on:change="selectDate" name="month">
+                            <option v-for="item of options.months">{{ item.month }}</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <select v-model="select.date" v-on:change="selectDate" name="date">
+                            <option v-for="item of options.dates">{{ item }}</option>
+                        </select>
+                    </div>
+                    <router-link :to="{ name: 'week', params: { category: $route.params.category, date: weekTarget } }" class="button" :disabled="weekTargetDisabled">find</router-link>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <h3 class="title is-3">Complete List of Series</h3>
+                <button class="button" v-on:click="toggleSeries">{{ showSeries.text}}</button>
+                <ol v-if="showSeries.boolean" class="columns is-multiline is-mobile">
+                    <li v-for="item of series" class="column is-6">
+                        <router-link :to="{ name: 'series', params: { category: $route.params.category, title: item.titleEncoded } }" class="box">
+                            <div class="is-size-5">{{item.title}}</div>
+                            <div class="is-size-7">{{item.totalIssues}} issues <span class="tag" :class="issueStatus(item.status)">{{item.status}}</span></div>
+                        </router-link>
+                    </li>
+                </ol>
+            </div>
+        </section>
     </div>
 </template>
 <script lang="ts">
