@@ -6,7 +6,7 @@
             </div>
         </section>-->
         <section class="carousel">
-            <h3 class="title is-3">Isu Terbaru</h3>
+            <h3 class="title is-3">New Issues</h3>
             <div class="carousel-item-wrapper">
                 <a class="carousel-arrow-left" v-on:click="slide(-1)" v-if="carouselIndex > 0">
                     <span><</span>
@@ -21,7 +21,7 @@
                             <div class="carousel-content-info">
                                 <span class="tag is-primary">{{issue.category}}</span>
                                 <span class="tag is-primary">{{issue.date}}</span>
-                                <p class="title">{{issue.name}}</p>
+                                <p>{{issue.name}}</p>
                             </div>
                         </router-link>
                     </div>
@@ -30,7 +30,7 @@
         </section>
         <section class="section is-hidden-mobile">
             <div class="container">
-                <h3 class="title is-3">Isu Terbaru</h3>
+                <h3 class="title is-3">New Issues</h3>
                 <ol class="columns is-multiline is-mobile">
                     <li v-for="issue of latestIssues" class="column is-3-tablet is-6-mobile">
                         <router-link :to="{ name: 'week', params: { category: issue.categoryEncoded, date: issue.date } }">

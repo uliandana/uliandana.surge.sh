@@ -5,12 +5,12 @@
                 <h1 class="title">{{ category }}</h1>
             </div>
         </section>
-        <section class="section">
+        <section class="section box">
             <div class="container">
                 <h3 class="title is-3">Featured</h3>
             </div>
         </section>
-        <section class="section">
+        <section class="section box">
             <div class="container">
                 <h3 class="title is-3">Find by Date</h3>
                 <div>
@@ -33,10 +33,10 @@
                 </div>
             </div>
         </section>
-        <section class="section">
+        <section class="section box">
             <div class="container">
                 <h3 class="title is-3">Complete List of Series</h3>
-                <button class="button" v-on:click="toggleSeries">{{ showSeries.text}}</button>
+                <button style="width: 100%; margin-bottom: 1.5rem;" class="button" v-on:click="toggleSeries">{{ showSeries.text}}</button>
                 <ol v-if="showSeries.boolean" class="columns is-multiline is-mobile">
                     <li v-for="item of series" class="column is-6">
                         <router-link :to="{ name: 'series', params: { category: $route.params.category, title: item.titleEncoded } }" class="box">
