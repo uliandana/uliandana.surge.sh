@@ -1,0 +1,79 @@
+.carousel {
+    @media only screen and (min-width: 768px) {
+        display: none;
+    }
+    position: relative;
+    overflow: hidden;
+    .carousel-item-wrapper {
+        width: 500%;
+        height: 400px;
+        .carousel-arrow-left {
+            text-decoration: none;
+            position: absolute;
+            z-index: 1;
+            height: inherit;
+            width: 70px;
+            &:hover {
+                background-color: #ccc;
+                opacity: 0.3;
+                span {opacity: 1;}
+            }
+            span {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                float: left;
+            }
+            left: 0;
+        }
+        .carousel-arrow-right {
+            text-decoration: none;
+            position: absolute;
+            z-index: 1;
+            height: inherit;
+            width: 70px;
+            &:hover {
+                background-color: #ccc;
+                opacity: 0.3;
+                span {opacity: 1;}
+            }
+            span {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                float: right;
+            }
+            right: 0;
+        }
+        .carousel-item {
+            width: 20%;
+            display: inline-block;
+            background-color: #eee;
+            transition: transform 0.5s;
+            height: inherit;
+
+            .carousel-content {
+                width: 260px;
+                height: inherit;
+                margin: auto;
+
+                a { width: inherit; }
+
+                .carousel-content-image {
+                    display: inline-block;
+                    position: absolute;
+                }
+
+                .carousel-content-info {
+                    width: inherit;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    background-color: rgba(223, 223, 223, 0.75);
+                    // color: #eee;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

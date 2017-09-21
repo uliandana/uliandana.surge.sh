@@ -4,6 +4,8 @@ const srcUrl: string = Util.assetsUrl;
 export default class Issue {
     name: string;
     nameEncoded: string;
+    category: string;
+    categoryEncoded: string;
     title: string;
     titleEncoded: string;
     date: string;
@@ -11,9 +13,11 @@ export default class Issue {
 
     constructor(obj: any) {
         this.name = obj.name;
-        this.nameEncoded = Util.textEncode(obj.name);
+        this.nameEncoded = obj.nameEncoded;
+        this.category = obj.category;
+        this.categoryEncoded = obj.categoryEncoded;
         this.title = obj.title;
-        this.titleEncoded = Util.textEncode(obj.title);
+        this.titleEncoded = obj.titleEncoded;
         this.date = obj.date;
         this.images = new Images(obj.images);
     }
