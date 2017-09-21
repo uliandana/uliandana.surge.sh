@@ -7,27 +7,29 @@
             </div>
         </section>
         <section class="section">
-            <ol class="container columns is-multiline is-mobile">
-                <li v-for="issue of week.issues" class="column is-3-tablet is-6-mobile">
-                <a v-on:click="toggleModal(issue.images.md)">
-                        <div class="card">
-                            <div class="card-image image">
-                                <img :src="issue.images.sm" />
-                            </div>
-                            <div class="card-content">
-                                <p>{{issue.name}}</p>
-                            </div>
-                            <footer class="card-footer">
-                                <div class="card-footer-item">
-                                <router-link
-                                    :to="{ name: 'series', params: { category: $route.params.category, title: issue.titleEncoded } }"
-                                >{{issue.title}}</router-link>
+            <div class="container">
+                <ol class="columns is-multiline is-mobile">
+                    <li v-for="issue of week.issues" class="column is-3-tablet is-6-mobile">
+                    <a v-on:click="toggleModal(issue.images.md)">
+                            <div class="card">
+                                <div class="card-image image">
+                                    <img :src="issue.images.sm" />
                                 </div>
-                            </footer>
-                        </div>
-                    </a>
-                </li>
-            </ol>
+                                <div class="card-content">
+                                    <p>{{issue.name}}</p>
+                                </div>
+                                <footer class="card-footer">
+                                    <div class="card-footer-item">
+                                    <router-link
+                                        :to="{ name: 'series', params: { category: $route.params.category, title: issue.titleEncoded } }"
+                                    >{{issue.title}}</router-link>
+                                    </div>
+                                </footer>
+                            </div>
+                        </a>
+                    </li>
+                </ol>
+            </div>
         </section>
         <div id="modal" class="modal" :class="">
             <div class="modal-background"></div>

@@ -7,27 +7,43 @@
             </div>
         </section>
         <section class="section">
-            <ol class="container columns is-multiline is-mobile">
-                <li v-for="issue of series.issues" class="column is-3-tablet is-6-mobile">
-                    <a v-on:click="toggleModal(issue.images.md)">
-                        <div class="card">
-                            <div class="card-image image">
-                                <img :src="issue.images.sm" />
-                            </div>
-                            <div class="card-content">
-                                <p>{{issue.name}}</p>
-                            </div>
-                            <footer class="card-footer">
-                                <div class="card-footer-item">
-                                    <router-link
-                                        :to="{ name: 'week', params: { category: $route.params.category, date: issue.date } }"
-                                    >{{issue.date}}</router-link>
+            <div class="container">
+                <ol class="columns is-multiline is-mobile">
+                    <li v-for="issue of series.issues" class="column is-3-tablet is-6-mobile">
+                        <a v-on:click="toggleModal(issue.images.md)">
+                            <div class="card">
+                                <div class="card-image image">
+                                    <img :src="issue.images.sm" />
                                 </div>
-                            </footer>
-                        </div>
-                    </a>
-                </li>
-            </ol>
+                                <div class="card-content">
+                                    <p>{{issue.name}}</p>
+                                </div>
+                                <footer class="card-footer">
+                                    <div class="card-footer-item">
+                                        <router-link
+                                            :to="{ name: 'week', params: { category: $route.params.category, date: issue.date } }"
+                                        >{{issue.date}}</router-link>
+                                    </div>
+                                </footer>
+                            </div>
+                        </a>
+                    </li>
+                </ol>
+                <nav class="pagination">
+                    <ul class="pagination-list">
+                        <li v-for="page of pages">
+                            <span v-if="page.isEllips" class="pagination-ellipsis">&hellip;</span>
+                            <router-link
+                                v-else
+                                :to="{ name: 'series', params: { category: $route.params.category, title: series.titleEncoded}, query: {page: page.number} }"
+                                class="pagination-link" :class="page.isCurrent"
+                            >
+                            {{page.number}}
+                            </router-link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </section>
         <div id="modal" class="modal" :class="">
             <div class="modal-background"></div>
@@ -36,20 +52,6 @@
             </div>
             <button class="modal-close is-large" v-on:click="toggleModal('')"></button>
         </div>
-        <nav class="pagination">
-            <ul class="pagination-list">
-                <li v-for="page of pages">
-                    <span v-if="page.isEllips" class="pagination-ellipsis">&hellip;</span>
-                    <router-link
-                        v-else
-                        :to="{ name: 'series', params: { category: $route.params.category, title: series.titleEncoded}, query: {page: page.number} }"
-                        class="pagination-link" :class="page.isCurrent"
-                    >
-                    {{page.number}}
-                    </router-link>
-                </li>
-            </ul>
-        </nav>
     </div>
 </template>
 <script lang="ts">
