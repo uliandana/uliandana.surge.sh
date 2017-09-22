@@ -18,9 +18,9 @@
 						<li class="navbar-item">
 							<router-link to="/about">About</router-link>
 						</li>
-						<li class="navbar-item">
+						<!-- <li class="navbar-item">
 							<router-link to="/list">My List</router-link>
-						</li>
+						</li> -->
 						<li class="navbar-item has-dropdown is-hoverable">
 							<a class="navbar-link">Categories</a>
 							<div class="navbar-dropdown is-right is-boxed">
@@ -33,6 +33,22 @@
 			</nav>
 		</header>
 		<router-view class="background"></router-view>
+		<footer class="footer">
+			<div class="level">
+				<div class="level-left">
+					<div>
+						<p>This app is part of</p>
+						<a href="http://uliandana.surge.sh"><span class="is-size-5">uliandana</span>.surge.sh</a>
+					</div>
+				</div>
+				<div class="level-right">
+					<div>
+						<p>Oka Uliandana</p>
+						<a href="https://twitter.com/heilooka">Twitter</a> | <a href="https://github.com/uliandana/">Github</a>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</div>
 	<script src="index.js"></script>
 	<script src="./dist/script.js"></script>

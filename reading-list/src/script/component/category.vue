@@ -5,11 +5,11 @@
                 <h1 class="title">{{ category }}</h1>
             </div>
         </section>
-        <section class="section box">
+        <!--<section class="section box">
             <div class="container">
                 <h3 class="title is-3">Featured</h3>
             </div>
-        </section>
+        </section>-->
         <section class="section box">
             <div class="container">
                 <h3 class="title is-3">Find by Date</h3>
