@@ -1,7 +1,12 @@
 @import "~bulma";
+@import "~spinkit/scss/spinners/8-circle";
 @import "./background";
 @import "./carousel";
 
+#spinnerOverlay {
+    background-color: findColorInvert($light);
+    display: none;
+}
 .footer {
     @media only screen and (max-width: 768px) {
         background-color: $black;

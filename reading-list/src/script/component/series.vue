@@ -10,7 +10,7 @@
             <div class="container">
                 <ol class="columns is-multiline is-mobile">
                     <li v-for="issue of series.issues" class="column is-3-tablet is-6-mobile">
-                        <a v-on:click="toggleModal(issue.images.md)">
+                        <a v-on:click="toggleModal(issue.images.sm)">
                             <div class="card">
                                 <div class="card-image image">
                                     <img :src="issue.images.sm" />
@@ -47,7 +47,7 @@
         </section>
         <div id="modal" class="modal" :class="">
             <div class="modal-background"></div>
-            <div class="modal-content">
+            <div class="modal-content has-text-centered">
                 <img :src="modalImage" />
             </div>
             <button class="modal-close is-large" v-on:click="toggleModal('')"></button>

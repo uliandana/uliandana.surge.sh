@@ -29,7 +29,11 @@ export default class Resource {
     }
 
     static async axiosRequest(url:string) {
+        let spinner = document.getElementById("spinnerOverlay");
+        spinner.style.display = "block";
         let res = await Axios.get(url);
+        Util.scrollToTop();
+        spinner.style.display = "none";
         if (res.data) return res.data;
         else return null;
     }
