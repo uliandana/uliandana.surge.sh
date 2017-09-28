@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="hero is-primary is-bold">
+        <section class="hero is-primary">
             <div class="hero-body">
                 <h1 class="title">Date: {{ week.date }}</h1>
                 <p class="subtitle">{{ week.totalIssues }} issues</p>
