@@ -5,6 +5,18 @@
                 <h1 class="title">{{ series.title }}</h1>
                 <p class="subtitle">{{ series.totalIssues }} issues | {{ series.status }}</p>
             </div>
+            <div class="hero-footer">
+                <router-link
+                    class="is-pulled-left"
+                    v-if="series.prevTitle"
+                    :to="{ name: 'series', params: { category: $route.params.category, title: series.prevTitleEncoded } }"
+                ><i class="mdi mdi-chevron-left"></i>{{ series.prevTitle }}</router-link>
+                <router-link
+                    class="is-pulled-right"
+                    v-if="series.nextTitle"
+                    :to="{ name: 'series', params: { category: $route.params.category, title: series.nextTitleEncoded } }"
+                >{{ series.nextTitle }}<i class="mdi mdi-chevron-right"></i></router-link>
+            </div>
         </section>
         <section class="section">
             <div class="container">

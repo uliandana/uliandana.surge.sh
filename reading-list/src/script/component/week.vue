@@ -5,6 +5,18 @@
                 <h1 class="title">Date: {{ week.date }}</h1>
                 <p class="subtitle">{{ week.totalIssues }} issues</p>
             </div>
+            <div class="hero-footer">
+                <router-link
+                    class="is-pulled-left"
+                    v-if="week.prevDate"
+                    :to="{ name: 'week', params: { category: $route.params.category, date: week.prevDate } }"
+                ><i class="mdi mdi-chevron-left"></i>{{ week.prevDate }}</router-link>
+                <router-link
+                    class="is-pulled-right"
+                    v-if="week.nextDate"
+                    :to="{ name: 'week', params: { category: $route.params.category, date: week.nextDate } }"
+                >{{ week.nextDate }}<i class="mdi mdi-chevron-right"></i></router-link>
+            </div>
         </section>
         <section class="section">
             <div class="container">

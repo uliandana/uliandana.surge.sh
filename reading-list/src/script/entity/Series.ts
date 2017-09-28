@@ -11,6 +11,10 @@ export default class Series {
     totalPages: number;
     issuesThisPage: number;
     issues: Issue[];
+    prevTitle: string;
+    prevTitleEncoded: string;
+    nextTitle: string;
+    nextTitleEncoded: string;
 
     constructor(obj: any) {
         this.title = obj.title;
@@ -23,6 +27,10 @@ export default class Series {
         this.totalPages = obj.totalPages;
         this.issuesThisPage = obj.issuesThisPage;
         this.issues = obj.issues.map(item => { return new Issue(item); });
+        this.prevTitle = obj.prevTitle;
+        this.prevTitleEncoded = obj.prevTitleEncoded;
+        this.nextTitle = obj.nextTitle;
+        this.nextTitleEncoded = obj.nextTitleEncoded;
     }
 
     getIssue(name: string) {
