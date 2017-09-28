@@ -9,10 +9,10 @@
             <h3 class="title is-3">New Issues</h3>
             <div class="carousel-item-wrapper">
                 <a class="carousel-arrow-left" v-on:click="slide(-1)" v-if="carouselIndex > 0">
-                    <span><</span>
+                    <span><i class="mdi mdi-chevron-left"></i></span>
                 </a>
                 <a class="carousel-arrow-right" v-on:click="slide(1)" v-if="carouselIndex < 3">
-                    <span>></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>
                 </a>
                 <div class="carousel-item" v-for="issue of latestIssues">
                     <div class="carousel-content">

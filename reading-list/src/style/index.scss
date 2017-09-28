@@ -3,6 +3,10 @@
 @import "./background";
 @import "./carousel";
 
+head {
+    background-color: $primary;
+}
+
 #spinnerOverlay {
     background-color: findColorInvert($light);
     display: none;
