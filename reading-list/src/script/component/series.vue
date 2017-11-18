@@ -57,7 +57,7 @@
                 </nav>
             </div>
         </section>
-        <div id="modal" class="modal" :class="">
+        <div id="modal" class="modal" :class="" v-on:click="toggleModal('')">
             <div class="modal-background"></div>
             <div class="modal-content has-text-centered">
                 <img :src="modalImage" />

@@ -15,4 +15,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
+    document.getElementById("scrollToTop").addEventListener("click", function() {
+        // This script is copied from http://codepen.io/rleve/pen/iCbgy -- credit to author
+        // Calculate how far and how fast to scroll
+        let startLocation = window.pageYOffset;
+        let endLocation = 0;
+        let distance = endLocation - startLocation;
+        let increments = distance/(200/16);
+        let stopAnimation;
+    
+        // Scroll the page by an increment, and check if it's time to stop
+        let animateScroll = function () {
+            window.scrollBy(0, increments);
+            stopAnimation();
+        };
+    
+        stopAnimation = function () {
+            let travelled = window.pageYOffset;
+            if ( travelled <= (endLocation || 0) ) {
+                clearInterval(runAnimation);
+            }
+        };
+    
+        // Loop the animation function
+        var runAnimation = setInterval(animateScroll, 16);
+    })
 });
