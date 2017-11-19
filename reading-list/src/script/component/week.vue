@@ -23,22 +23,22 @@
                 <ol class="columns is-multiline is-mobile">
                     <li v-for="issue of week.issues" class="column is-3-tablet is-6-mobile">
                     <a v-on:click="toggleModal(issue.images.sm)">
-                            <div class="card">
-                                <div class="card-image image">
-                                    <img :src="issue.images.sm" />
-                                </div>
-                                <div class="card-content">
-                                    <p>{{issue.name}}</p>
-                                </div>
-                                <footer class="card-footer">
-                                    <div class="card-footer-item">
-                                    <router-link
-                                        :to="{ name: 'series', params: { category: $route.params.category, title: issue.titleEncoded } }"
-                                    >{{issue.title}}</router-link>
-                                    </div>
-                                </footer>
+                        <div class="card">
+                            <div class="card-image image">
+                                <img v-on:load="loadImage" :data-src="issue.images.sm" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAGQCAIAAADHnYkIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANtSURBVHhe7dMBDQAwEAOh+fdTf0s+JwM88AYcGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBjjbB9LP5DRto1WEAAAAAElFTkSuQmCC" />
                             </div>
-                        </a>
+                            <div class="card-content">
+                                <p>{{issue.name}}</p>
+                            </div>
+                            <footer class="card-footer">
+                                <div class="card-footer-item">
+                                <router-link
+                                    :to="{ name: 'series', params: { category: $route.params.category, title: issue.titleEncoded } }"
+                                >{{issue.title}}</router-link>
+                                </div>
+                            </footer>
+                        </div>
+                    </a>
                     </li>
                 </ol>
             </div>
@@ -78,6 +78,10 @@
                 this.modalImage = image;
                 let modalClass = document.getElementById("modal").classList
                 !image ? modalClass.remove("is-active") : modalClass.add("is-active");
+            },
+
+            loadImage(event) {
+                event.target.src = event.target.dataset.src;
             }
         }
     };

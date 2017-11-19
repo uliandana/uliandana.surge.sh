@@ -25,7 +25,7 @@
                         <a v-on:click="toggleModal(issue.images.sm)">
                             <div class="card">
                                 <div class="card-image image">
-                                    <img :src="issue.images.sm" />
+                                    <img v-on:load="loadImage" :data-src="issue.images.sm" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAGQCAIAAADHnYkIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANtSURBVHhe7dMBDQAwEAOh+fdTf0s+JwM88AYcGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBogMEBkgMkBkgMgAkQEiA0QGiAwQGSAyQGSAyACRASIDRAaIDBAZIDJAZIDIAJEBIgNEBjjbB9LP5DRto1WEAAAAAElFTkSuQmCC" />
                                 </div>
                                 <div class="card-content">
                                     <p>{{issue.name}}</p>
@@ -96,6 +96,10 @@
                 this.modalImage = image;
                 let modalClass = document.getElementById("modal").classList
                 !image ? modalClass.remove("is-active") : modalClass.add("is-active");
+            },
+
+            loadImage(event) {
+                event.target.src = event.target.dataset.src;
             }
         }
     };
