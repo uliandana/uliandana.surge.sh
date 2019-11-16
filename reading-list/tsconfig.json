@@ -1,15 +1,15 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "target": "es5",
-        "allowSyntheticDefaultImports": true,
-        "types": [
-            "node"
-        ],
-        "lib": [
-            "es6",
-            "es2015",
-            "dom"
-        ]
-    }
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es6",
+      "es2015",
+      "dom"
+    ]
+  }
 }
