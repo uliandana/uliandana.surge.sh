@@ -6,6 +6,7 @@ module.exports = {
   devServer: {
     port: 4000,
     publicPath: '/dist/',
+    stats: 'none',
   },
   entry: './src/script',
   mode: 'production',
